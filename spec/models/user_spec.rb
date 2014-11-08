@@ -13,9 +13,23 @@ RSpec.describe User, :type => :model do
 
   let(:user) { build(:user) }
 
+  # let's test some M.E.T.H.O.D. methods, man.
   context 'when user signs up' do
     it "should save with valid attributes" do
       expect{user.save!}.not_to raise_error
+    end
+
+    it "should generate auth token" do
+      user.save
+      expect(user.auth_token).not_to be_nil
+    end
+
+    it "should regenerate auth token uniquely" do
+      user.save
+      first_token = user.auth_token
+      user.regenerate_auth_token
+      user.reload
+      expect(user.auth_token).not_to eq(first_token)
     end
 
     context "should fail to save" do
@@ -45,38 +59,58 @@ RSpec.describe User, :type => :model do
       end
     end
 
-    context "should respond to association" do
-      specify "profile" do
-        expect(user).to respond_to(:profile)
-      end
+    # Didja know this is possible?
+    # describe "iterated ass" do
+    #   associations = [:profile, :likes, :friended_users, :users_friended_by, :posts, :photos]
+    #   associations.each do |ass|
+    #     it { is_expected.to respond_to(ass) }
+    #   end
+    # end
 
-      specify "posts" do
-        expect(user).to respond_to(:posts)
-      end
+    describe "associations" do
+      it { is_expected.to respond_to(:profile) }
 
-      specify "comments" do
-        expect(user).to respond_to(:comments)
-      end
+      it { is_expected.to respond_to(:comments) }
 
-      specify "likes" do
-        expect(user).to respond_to(:likes)
-      end
+      it { is_expected.to respond_to(:likes) }
 
-      specify "friended users" do
-        expect(user).to respond_to(:friended_users)
-      end
+      it { is_expected.to respond_to(:friended_users) }
 
-      specify "users friended by" do
-        expect(user).to respond_to(:users_friended_by)
-      end
+      it { is_expected.to respond_to(:users_friended_by) }
 
-      specify "photos" do
-        expect(user).to respond_to(:photos)
-      end
+      it { is_expected.to respond_to(:posts) }
+
+      it { is_expected.to respond_to(:photos) }
+
+      # specify "profile" do
+      #   expect(user).to respond_to(:profile)
+      # end
+
+      # specify "posts" do
+      #   expect(user).to respond_to(:posts)
+      # end
+
+      # specify "comments" do
+      #   expect(user).to respond_to(:comments)
+      # end
+
+      # specify "likes" do
+      #   expect(user).to respond_to(:likes)
+      # end
+
+      # specify "friended users" do
+      #   expect(user).to respond_to(:friended_users)
+      # end
+
+      # specify "users friended by" do
+      #   expect(user).to respond_to(:users_friended_by)
+      # end
+
+      # specify "photos" do
+      #   expect(user).to respond_to(:photos)
+      # end
     end
 
-    it "should generate auth token"
-    it "should regenerate auth token uniquely"
   end
 
 end

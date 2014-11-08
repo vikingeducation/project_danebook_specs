@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    @user = @comment.commentable.user
+    @user = @comment.commentable.author
 
     if @comment.destroy
       flash[:success] = "Deleted."

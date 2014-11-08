@@ -22,6 +22,7 @@ group :test, :development do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'capybara'
   gem 'launchy'
+  gem 'shoulda-matchers'
 end
 
 

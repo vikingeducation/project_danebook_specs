@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   has_many :users_friended_by,    :through => :received_friendings,
                                   :source => :friend_initiator
 
-  validates :fname, :lname, :email, presence: true
+  validates :fname, :lname, :email, :birthday, :gender, presence: true
   validates :email, uniqueness: true
   validates :password, length: { minimum: 8 },
                        allow_nil: true
@@ -44,5 +44,4 @@ class User < ActiveRecord::Base
 		generate_token
 		save!
 	end
-
 end
