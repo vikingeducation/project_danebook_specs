@@ -10,6 +10,8 @@ RSpec.describe Comment, :type => :model do
   	#  has_many :likes, as: :likable, dependent: :destroy
   	it { is_expected.to respond_to(:likes) }
 
+    it { is_expected.to respond_to(:commentable) }
+
   end
 
   describe "creating a comment" do
@@ -20,7 +22,7 @@ RSpec.describe Comment, :type => :model do
   	end
 
   	it "should validate the presence of author" do
-  		comment.author_id = 999999
+  		comment.author_id = 3_999_999_999 #clearly doesn't exist
   		expect{ comment.save! }.to raise_error
   	end
 

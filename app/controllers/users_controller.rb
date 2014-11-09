@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :require_new_user, only: [:new]
 
   def new
+
     @user = User.new
   end
 
@@ -15,7 +16,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in(@user)
       flash[:success] = "Welcome #{@user.fname}!"
-      redirect_to root_path
+      redirect_to user_profile_url(@user)
     else
       flash.now[:error] = "Your account could not be created"
       render :new

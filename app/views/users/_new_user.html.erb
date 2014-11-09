@@ -1,5 +1,16 @@
 
 <%= form_for @user, class: "sign-up-form-group" do |user_fields| %>
+  <div class = "errors">
+    <%@user.errors.full_messages.each do |error|%>
+      <p><%= error.inspect%></p>
+    <% end %>
+  </div>
+  <% flash.each do |type, message| %>
+    <div class="alert fade in">
+      <button class="close" data-dismiss="alert">×</button>
+      <%= message %>
+    </div>
+  <% end %>
   <div class="sign-up-names row">
     <div class="form-group col-md-6">
       <%= user_fields.text_field :fname, {class: "form-control", placeholder: "First Name"} %>
@@ -41,8 +52,8 @@
 
     <p class="for-lawyers col-lg-8">By clicking sign-up you agree that we can and will use all of your data without pause or consideration of your privacy.</p>
 
-  </div>
-  <%= user_fields.submit "Sign Up!", class: "sign-up-btn btn btn-success btn-lg col-sm-5 col-xs-12" %>
+  <%= user_fields.submit "Sign Up!", id: "sign_up_btn", class: "sign-up-btn btn btn-success btn-lg col-sm-5 col-xs-12" %>
+
 <% end %>
 
 
