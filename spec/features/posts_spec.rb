@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'pry'
 
 feature "Posts", :type => :feature do
   let(:user){create(:user)}
@@ -11,6 +12,8 @@ feature "Posts", :type => :feature do
     fill_in 'post_body', with: "All hail the supreme divine emperor, Peter, god of all worlds!"
 
     click_button 'Post'
+
+    @post = Post.last
   end
 
   scenario 'post on own timeline' do
@@ -19,10 +22,20 @@ feature "Posts", :type => :feature do
 
   scenario 'delete own post' do
   	# delete the post using the find and click
-  	post = Post.last
-  	click_link "delete-post-#{post.id}"
+
   	# expect that post to not exist
-  	expect(post).not_to exist
+  	expect{ click_link "delete-post-#{@post.id}" }.to change(Post, :count).by(-1)
+  end
+
+  context 'liking a post' do
+  	scenario 'likable is spelled correctly' do
+  		expect{ Post.likeable }.to raise_error
+  	end
+
+  	scenario "like a post" do
+  		expect{ click_link "like-post-#{@post.id}" }.to change(Like, :count).by(1)
+  		expect{ click_link "like-post-#{@post.id}" }.to change(@post.likes, :count).by(1)
+  	end
   end
 
 end
