@@ -23,6 +23,7 @@ RSpec.describe UsersController, :type => :controller do
         expect{post :create, user: attributes_for(:user)}.
                              to change(User, :count).by(1)
       end
+
       it 'should build a profile for the user' do
         expect{post :create, user: attributes_for(:user)}.
                              to change(Profile, :count).by(1)
@@ -48,7 +49,7 @@ RSpec.describe UsersController, :type => :controller do
                                                   not_to change(User, :count)
       end
 
-      it 'should redirect to the root path' do
+      it 'should re-render the new user path' do
         post :create, user: attributes_for(:user, password: "nope")
         expect(response).to render_template :new
       end
