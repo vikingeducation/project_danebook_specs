@@ -7,7 +7,7 @@ RSpec.describe Comment, :type => :model do
   	#  belongs_to :author
   	it { is_expected.to respond_to(:author) }
 
-  	#  has_many :likes, as: :likable, dependent: :destroy
+  	#  has_many :likes, as: :likeable, dependent: :destroy
   	it { is_expected.to respond_to(:likes) }
 
     it { is_expected.to respond_to(:commentable) }
