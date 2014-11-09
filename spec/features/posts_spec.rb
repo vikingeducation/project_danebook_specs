@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'pry'
 
-feature "Posts", :type => :feature do
+feature "Post actions", :type => :feature do
   let(:user){create(:user)}
 
   before do
@@ -29,7 +29,7 @@ feature "Posts", :type => :feature do
 
   context 'liking a post' do
   	scenario 'likable is spelled correctly' do
-  		expect{ Post.likeable }.to raise_error
+  		expect(Like.first).not_to respond_to(:likeable)
   	end
 
   	scenario "like a post" do

@@ -7,9 +7,11 @@ class CommentsController < ApplicationController
 		@comment = commentable_type.comments.build(comment_params)
     @comment.author_id = current_user.id
     if @comment.save
-      redirect_to request.referrer
+      redirect_to request.referer
     else
       flash[:error] = "There was a terrible problem with that comment"
+      # change these to the purge the session version
+      redirect_to request.referer
     end
 	end
 

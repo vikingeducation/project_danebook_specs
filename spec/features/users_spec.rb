@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'pry'
+
 feature "User Accounts", :type => :feature do
 
   context 'sign up' do
