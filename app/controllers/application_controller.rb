@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  include ApplicationHelper
 
   private
 
@@ -24,10 +25,10 @@ class ApplicationController < ActionController::Base
     cookies.delete(:auth_token)
   end
 
-  def current_user
-    @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
-  end
-  helper_method :current_user
+  # def current_user
+  #   @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
+  # end
+  # helper_method :current_user
 
   def signed_in?
      !!current_user
@@ -44,10 +45,10 @@ class ApplicationController < ActionController::Base
     redirect_to user_profile_path(current_user) if current_user
   end
 
-  def current_user?
-    params[:user_id] == current_user.id.to_s
-  end
-  helper_method :current_user?
+  # def current_user?
+  #   params[:user_id] == current_user.id.to_s
+  # end
+  # helper_method :current_user?
 
   def require_current_user
     unless current_user?

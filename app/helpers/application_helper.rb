@@ -20,4 +20,17 @@ module ApplicationHelper
 	def build_comment(type)
 		type.comments.build
 	end
+
+	def current_user
+    if @current_user
+	  	@current_user
+	  else
+	    @current_user = User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
+	  end
+  end
+
+  def current_user?
+    params[:user_id] == current_user.id.to_s
+  end
+
 end
