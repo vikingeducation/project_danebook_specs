@@ -16,9 +16,9 @@
       <div class="menu-row row">
         <div class="btn-group col-xs-offset-2 col-sm-10">
 
-          <%= link_to "Timeline", new_user_post_path, class: "menu-item col-xs-12 col-sm-2 btn-default" %>
+          <%= link_to "Timeline", new_user_post_path(@user), class: "menu-item col-xs-12 col-sm-2 btn-default" %>
 
-          <%= link_to "About", user_profile_path, class: "menu-item col-xs-12 col-sm-2 btn-default" %>
+          <%= link_to "About", user_profile_path(@user), class: "menu-item col-xs-12 col-sm-2 btn-default" %>
 
           <a href="./photos.html">
           <button type="button" class="menu-item col-xs-12 col-sm-2 btn-default">
@@ -32,7 +32,7 @@
           </button>
           </a>
 
-          <%= only_user_sees(edit_link, @user) %>
+          <%= only_user_sees(edit_link, @user) unless current_page?(edit_user_profile_path(@user)) %>
 
         </div> <!-- /button group -->
       </div> <!-- /menu-row -->

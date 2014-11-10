@@ -8,7 +8,7 @@ module ProfilesHelper
 	end
 
 	def edit_link
-		link_to "Edit profile", edit_user_profile_path, {class: "edit"}
+		link_to "Edit profile", edit_user_profile_path(@user), {class: "edit"}
 	end
 
 	def edit_button
@@ -16,7 +16,7 @@ module ProfilesHelper
 	end
 
 	def user_profile_name
-		User.find(params[:user_id]).name
+		@user.name
 	end
 
 	def user_exist?
