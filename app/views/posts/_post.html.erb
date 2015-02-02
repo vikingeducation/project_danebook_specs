@@ -24,7 +24,7 @@
               </div>
             </div>
             <div class="likes-and-comments">
-              <a><%= post.likes.count %></a> likes this.
+              <a><%= post.likes.count %></a> like this.
             <hr>
               <!-- This is a bit hacky, but it allows an easy way to open a new comment box for each post -->
               <%= render 'shared/comments', resource: post unless post.comments.blank? %>
