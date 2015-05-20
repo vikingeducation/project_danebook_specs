@@ -1,0 +1,373 @@
+/* COLORS */
+/* line 3, /Users/macbookpro/danebook_specs/app/assets/stylesheets/shared/cover_section.css.scss */
+.cover-profile-block {
+  border: 1px solid #d3d6db;
+}
+/* line 5, /Users/macbookpro/danebook_specs/app/assets/stylesheets/shared/cover_section.css.scss */
+.cover-profile-block .profile-name {
+  position: relative;
+  color: #FFF;
+  margin-left: 180px;
+  top: 400px;
+}
+/* line 11, /Users/macbookpro/danebook_specs/app/assets/stylesheets/shared/cover_section.css.scss */
+.cover-profile-block .cover-photo {
+  background: url("http://s3.amazonaws.com/viking_education/web_development/web_app_eng/hogwarts_small.jpg") no-repeat center;
+  background-size: cover;
+  height: 450px;
+}
+/* line 18, /Users/macbookpro/danebook_specs/app/assets/stylesheets/shared/cover_section.css.scss */
+.cover-profile-block .profile-photo-wrapper .profile-photo {
+  padding: 4px;
+  position: relative;
+  width: 160px;
+  height: 160px;
+  overflow: hidden;
+  z-index: 101;
+  top: -140px;
+  left: -170px;
+}
+/* line 30, /Users/macbookpro/danebook_specs/app/assets/stylesheets/shared/cover_section.css.scss */
+.cover-profile-block .edit {
+  float: right;
+  padding-top: 15px;
+}
+/* line 35, /Users/macbookpro/danebook_specs/app/assets/stylesheets/shared/cover_section.css.scss */
+.cover-profile-block .menu-item {
+  float: left;
+  padding: 0 10px;
+  border: 1px solid #d3d6db;
+}
+/* line 39, /Users/macbookpro/danebook_specs/app/assets/stylesheets/shared/cover_section.css.scss */
+.cover-profile-block .menu-item a {
+  text-decoration: none;
+  color: #555;
+}
+/* NAVBAR STYLES */
+/* COLORS */
+/* line 5, /Users/macbookpro/danebook_specs/app/assets/stylesheets/shared/navbar.css.scss */
+.danish-navbar {
+  background-color: #c60c30;
+  border: #c60c30;
+  height: 80px;
+}
+
+/* line 10, /Users/macbookpro/danebook_specs/app/assets/stylesheets/shared/navbar.css.scss */
+.navbar-header {
+  padding-left: 80px;
+}
+/* line 13, /Users/macbookpro/danebook_specs/app/assets/stylesheets/shared/navbar.css.scss */
+.navbar-header a .logo {
+  width: 170px;
+  height: auto;
+}
+
+/* line 20, /Users/macbookpro/danebook_specs/app/assets/stylesheets/shared/navbar.css.scss */
+.menu-btn {
+  margin-top: 20px;
+}
+
+/* line 24, /Users/macbookpro/danebook_specs/app/assets/stylesheets/shared/navbar.css.scss */
+.nav-responsive-wrapper {
+  background-color: #c60c30;
+  border: #c60c30;
+}
+/* line 27, /Users/macbookpro/danebook_specs/app/assets/stylesheets/shared/navbar.css.scss */
+.nav-responsive-wrapper .sign-in-wrapper {
+  border-color: #c60c30;
+}
+
+/* line 32, /Users/macbookpro/danebook_specs/app/assets/stylesheets/shared/navbar.css.scss */
+.sign-in-label {
+  color: white !important;
+}
+/* line 34, /Users/macbookpro/danebook_specs/app/assets/stylesheets/shared/navbar.css.scss */
+.sign-in-label p {
+  margin: 0;
+}
+
+/* line 39, /Users/macbookpro/danebook_specs/app/assets/stylesheets/shared/navbar.css.scss */
+.navbar-email-group {
+  display: block;
+}
+
+/* line 43, /Users/macbookpro/danebook_specs/app/assets/stylesheets/shared/navbar.css.scss */
+.sign-in-btn {
+  background-color: #940924;
+  color: white;
+  border: 1px solid #333;
+  box-shadow: 1px 1px 1px 0 #333;
+}
+
+/* line 50, /Users/macbookpro/danebook_specs/app/assets/stylesheets/shared/navbar.css.scss */
+.navbar-search-wrapper {
+  display: inline-block;
+  margin-top: 15px;
+  width: 53%;
+}
+/* line 54, /Users/macbookpro/danebook_specs/app/assets/stylesheets/shared/navbar.css.scss */
+.navbar-search-wrapper .nav-input {
+  width: 100%;
+}
+/* line 56, /Users/macbookpro/danebook_specs/app/assets/stylesheets/shared/navbar.css.scss */
+.navbar-search-wrapper .nav-input .form-control {
+  width: 100%;
+}
+
+/* line 62, /Users/macbookpro/danebook_specs/app/assets/stylesheets/shared/navbar.css.scss */
+#navbar-usr-profile {
+  padding: 15px 0 0 20px;
+  display: inline-block;
+}
+/* COLORS */
+/* COLORS */
+/* UNIVERSAL */
+/* line 8, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+body {
+  font-family: "Lucida sans";
+  padding-top: 40px;
+}
+
+/* line 13, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+header {
+  font-family: "Freight sans bold";
+}
+
+/* line 17, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+hr {
+  padding: 0;
+  margin: 0;
+}
+
+/* line 22, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+footer {
+  margin: 20px;
+}
+
+/* line 26, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.konami {
+  opacity: 0;
+  background-image: url("http://antiekllc.com/wp-content/uploads/2014/07/cartoon-banana-dancing-5.jpg");
+}
+
+/* line 31, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.bkg-fix {
+  background-color: white;
+  border: 1px solid #d3d6db;
+  border-radius: 3px;
+}
+
+/* line 38, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.grey-title {
+  border: 1px solid #d3d6db;
+  background-color: #f7f7f7;
+  height: 40px;
+  text-align: center;
+}
+
+/* line 45, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.grey-footer {
+  border: 1px solid #d3d6db;
+  background-color: #f7f7f7;
+  height: 100%;
+  padding: 5px 0;
+}
+
+/* HOMEPAGE STYLES */
+/* line 53, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.homepage-content-wrapper {
+  margin-bottom: 0;
+  /* MESSAGING STYLES  */
+  /* SIGN UP BLOCK STYLES */
+}
+/* line 57, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.homepage-content-wrapper .messaging h2 {
+  padding: 40px 0 24px;
+}
+/* line 62, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.homepage-content-wrapper .value-messages {
+  color: #555;
+}
+/* line 64, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.homepage-content-wrapper .value-messages ul {
+  list-style-type: none;
+  padding: 0 0 30px;
+}
+/* line 67, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.homepage-content-wrapper .value-messages ul li {
+  margin: 10px 0;
+}
+/* line 69, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.homepage-content-wrapper .value-messages ul li img {
+  padding: 10px;
+}
+/* line 72, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.homepage-content-wrapper .value-messages ul li #like {
+  height: 70px;
+  width: auto;
+  opacity: 0.5;
+}
+/* line 83, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.homepage-content-wrapper .sign-up-block h2 {
+  font-size: 36px;
+}
+/* line 86, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.homepage-content-wrapper .sign-up-block .for-lawyers {
+  font-size: 10px;
+}
+/* line 92, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.homepage-content-wrapper .sign-up-gender li {
+  list-style: none;
+  display: inline-block;
+  padding-right: 20px;
+}
+/* line 99, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.homepage-content-wrapper .sign-up-btn {
+  box-shadow: 2px 2px 1px rgba(50, 50, 50, 0.75);
+}
+
+/* EDIT ABOUT */
+/* line 105, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.edit-profile-box {
+  resize: none;
+}
+
+/* line 109, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.information-textarea {
+  height: 2em;
+}
+
+/* PHOTOS */
+/* line 117, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.photos-page img:hover {
+  opacity: 0.5;
+}
+
+/* FRIENDS */
+/* line 124, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.friend-box {
+  display: inline-flex;
+}
+
+/* line 128, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.friends-page-img {
+  width: 100px;
+  height: 100px;
+  margin: 15px 15px 15px 0;
+}
+
+/* TIMELINE */
+/* line 136, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.post-input {
+  margin: 20px 0;
+  height: 63px;
+  width: 100%;
+  border: 1px solid #d3d6db;
+  word-wrap: break-all;
+  resize: none;
+}
+
+/* line 145, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.post-button {
+  margin: 5px;
+  background-color: #5381e3;
+  color: white;
+}
+
+/* line 151, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.post-friend {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+/* line 156, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.post-friend-thumb {
+  width: 60px;
+  height: 60px;
+  overflow: none;
+  padding: 5px;
+}
+
+/* line 164, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.post-friend-info {
+  padding-top: 10px;
+}
+
+/* line 168, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.post-text {
+  padding-left: 15px;
+  margin: 5px;
+}
+
+/* line 173, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.comment-friend-thumb {
+  width: 65px;
+  height: auto;
+}
+
+/* line 180, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.like-or-comment a {
+  padding-right: 10px;
+}
+
+/* line 186, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.delete-post a {
+  float: right;
+}
+
+/* line 191, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+#cancel {
+  float: left;
+}
+
+/* test tools */
+/* line 197, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.top-buffer {
+  margin-top: 20px;
+}
+
+/* line 201, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.buffer {
+  margin: 15px 0;
+}
+
+/* line 205, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.testfill {
+  height: 140px;
+}
+
+/* line 210, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.testred {
+  background-color: red;
+}
+
+/* line 214, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.testblue {
+  background-color: blue;
+}
+
+/* line 219, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.fill {
+  height: 100%;
+}
+
+/* line 222, /Users/macbookpro/danebook_specs/app/assets/stylesheets/static_pages.css.scss */
+.fillw {
+  width: 100%;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
