@@ -1,9 +1,6 @@
-danebook_goes_live
-==================
+#Danebook on Heroku
 
 Week 7 Solo Assignment
-
-This is your README!
 
 Implimentation by [Trevor Elwell](http://trevorelwell.me)
 
