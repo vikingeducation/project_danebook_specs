@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+.flash-messages .alert, .error-message .alert {
+	margin-bottom: 0px;
+}

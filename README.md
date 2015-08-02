@@ -1,4 +1,4 @@
-danebook
+Danebook
 ========
 
 Implimentation by [Trevor Elwell](http://trevorelwell.me)
