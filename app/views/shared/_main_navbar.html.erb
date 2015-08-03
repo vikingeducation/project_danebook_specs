@@ -1,0 +1,47 @@
+<!-- Building the navbar -->
+<div id="navbar">
+	<div id="navbar_left" class="col-md-7">
+		<h2>TrevBook</h2>
+	</div>
+	
+	<div id="navbar_right" class="col-md-5">
+		
+		<% if signed_in_user? %>
+
+			<div class="navbar-signed-in">
+				<h3>Howdy, <%= @current_user.first_name %>!</h3>
+				<p><%= link_to "Logout", session_path, :method => :delete %></p>
+			</div>
+
+		<% else %>
+			
+			<!-- We only want this in our navbar if the user isn't logged in -->
+			<%= form_tag session_path do %>
+			
+				<div id="navbar_email">
+					<%= label_tag do %>
+				    <p>Email</p>
+				    <%= text_field_tag :email, nil, class: "form-control" %>
+				  <% end %>
+				</div>
+				
+				<div id="navbar_password">
+					<%= label_tag do %>
+				    <p>Password</p>
+				    <%= password_field_tag :password, nil, class: "form-control" %>
+				  <% end %>
+				</div>
+				
+				<div id="navbar_login_btn">
+					  <%= submit_tag "Login", class: "btn btn-info" %>
+				</div>
+
+			<% end %> <!-- End form_tag -->
+
+		<% end %>
+
+		
+		
+	</div>
+</div>
+<!-- /Building the navbar -->

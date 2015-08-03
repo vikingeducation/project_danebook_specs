@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+	before_filter :current_user
+
 	def new
 		@user = User.new
 	end
@@ -9,6 +11,12 @@ class UsersController < ApplicationController
 		@user.birthday = convert_birthday(params)
 		if @user.save
 			flash[:success] = "User created successfully!"
+			sign_in(@user)
+			
+			# Once the user is created we'll want to create a blank
+			# profile for them.
+			Profile.create(:user_id => @user.id)
+			
 			redirect_to root_url
 		else
 			flash[:error] = "Failed to create user"

@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
 
+	# Let's add our associations
+	has_one :profile
+
 	has_secure_password
 
 	validates :password, 

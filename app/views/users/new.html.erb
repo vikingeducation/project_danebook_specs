@@ -3,30 +3,7 @@
 	
 	<main class="row">
 		
-		<!-- Building the navbar -->
-		<div id="navbar">
-			<div id="navbar_left" class="col-md-7">
-				<h2>TrevBook</h2>
-			</div>
-			
-			<div id="navbar_right" class="col-md-5">
-				<div id="navbar_email">
-					<p>Email:</p>
-					<input type="text">
-				</div>
-				
-				<div id="navbar_password">
-					<p>Password:</p>
-					<input type="text">
-				</div>
-				
-				<div id="navbar_login_btn">
-					<button type="button" class="btn btn-info">Login</button>
-				</div>
-				
-			</div>
-		</div>
-		<!-- /Building the navbar -->
+		<%= render partial: "/shared/main_navbar", locals: { } %>
 		
 		<!-- Building the content section -->
 		<div id="content">
