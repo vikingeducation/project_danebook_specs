@@ -4,6 +4,7 @@ ruby '2.2.0'
 group :production do
   gem 'rails_12factor'
   gem 'pg'
+  gem 'hirb'
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
