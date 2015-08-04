@@ -17,3 +17,11 @@
 .flash-messages .alert, .error-message .alert {
 	margin-bottom: 0px;
 }
+
+#navbar_left > h2 > a {
+	color: white;
+}
+
+#navbar_left > h2 > a:hover {
+	text-decoration: none;
+}

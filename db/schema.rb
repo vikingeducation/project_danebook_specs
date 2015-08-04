@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150803020254) do
+ActiveRecord::Schema.define(version: 20150804011958) do
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id",          null: false
     t.string   "college"
     t.string   "hometown"
     t.string   "currently_live"
-    t.integer  "phone"
+    t.string   "phone"
     t.text     "words_to_live_by"
     t.text     "bio"
     t.datetime "created_at",       null: false
@@ -36,6 +36,9 @@ ActiveRecord::Schema.define(version: 20150803020254) do
     t.integer  "gender"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "auth_token"
   end
+
+  add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true
 
 end

@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 		if @user && @user.authenticate(params[:password])
 			sign_in(@user)
 			flash[:success] = "Successfully logged in!"
-			redirect_to root_url
+			redirect_to profile_path(@current_user.profile)
 		else
 			flash.now[:error] = "Couldn't log you in, please try again."
 			error_model = @user
