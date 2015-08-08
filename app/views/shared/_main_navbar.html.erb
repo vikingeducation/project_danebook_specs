@@ -1,7 +1,7 @@
 <!-- Building the navbar -->
 <div id="navbar">
 	<div id="navbar_left" class="col-md-7">
-		<h2><%= link_to "TrevBook", root_url %></h2>
+		<h2><%= link_to "TrevBook", (@current_user ? profile_path(@current_user.profile) : root_url) %></h2>
 	</div>
 	
 	<div id="navbar_right" class="col-md-5">

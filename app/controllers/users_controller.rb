@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 	
+	# TODO: Redirect user to homepage if not 
+	# logged in viewing profiles
 
 	def new
 		@user = User.new
@@ -16,6 +18,7 @@ class UsersController < ApplicationController
 			# profile for them.
 			Profile.create(:user_id => @user.id)
 			
+			# TODO: Redirect to profile_path
 			redirect_to root_url
 		else
 			flash[:error] = "Failed to create user"

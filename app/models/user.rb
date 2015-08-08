@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 	# Let's add our associations
 
 		has_one :profile
+		has_many :posts
 
 	# End associations
 
@@ -25,11 +26,17 @@ class User < ActiveRecord::Base
 	validates :last_name, :email, :presence => true
 	validates :gender, inclusion: { in: [1,2], message: "not selected" }
 
+	def name
+		first_name + ' ' + last_name
+	end
 	
 	def generate_token
+		
 		# QUESTION: Can we go over exactly how this works? Why is self[:auth_token]
 		# setting this entry, I feel like it shouldn't. I believe I understand the 
 		# while loop just the syntax is funny... this is a rescue loop?
+		# ANSWER: self[:auth_token] == self.auth_token
+		
 		begin
 			self[:auth_token] = SecureRandom.urlsafe_base64
 		end	while User.exists?(:auth_token => self[:auth_token])

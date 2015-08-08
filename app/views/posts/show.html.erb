@@ -1,0 +1,94 @@
+<div id="wrapper" class="container-fluid">
+<%= render partial: '/shared/main_navbar' %>
+
+<div id="content" class="col-md-10 col-md-offset-1">
+
+	<%= render partial: '/shared/header' %>
+
+	<main class="row">
+		
+		<!-- Sidebar -->
+		<aside id="sidebar" class="col-md-4">
+			
+			<section class="module">
+				<h3 class="module-title">About</h3>
+				<div class="module-content">
+					<p><b>Born on:</b> <%= @profile.user.birthday %></p>
+					<p><b>Went to school at:</b> <%= @profile.college %></p>
+					<p><b>Hometown:</b> <%= @profile.hometown %></p>
+					<p><b>Currently lives:</b> <%= @profile.currently_live %></p>
+				</div>
+			</section>
+
+			<section class="module">
+				<h3 class="module-title">Photos</h3>
+				<div class="module-content">
+					<p>Content goes here.</p>
+				</div>
+			</section>
+
+			<section class="module">
+				<h3 class="module-title">Friends</h3>
+				<div class="module-content">
+					<p>Content goes here.</p>
+				</div>
+			</section>
+
+		</aside>
+		<!-- / Sidebar -->
+
+		<!-- Timeline -->
+		<div class="col-md-8">
+			<% if belongs_to_current_user? %>
+				<section class="module clearfix no-border">
+					<h3 class="module-title">Post on your timeline</h3>
+					<%= form_for(@post) do |f| %>
+						<%= f.text_area :content, class: 'form-control', placeholder: 'Tell the world something...' %>
+						<%= f.submit 'Post', class: 'btn btn-primary pull-right' %>
+					<% end %>
+				</section>
+			<% end %>
+			
+			<!-- Give some default output if there aren't any posts -->
+			<% if @profile.posts.count == 0 %>
+
+				<p>Sorry, there are no posts to display.</p>
+			
+			<% else %>
+
+				<% @profile.posts.order('created_at DESC').each do |post| %>
+					<section class="post col-sm-12">
+						<div class="post-header col-sm-12">
+							<p><%= link_to post.user.name, profile_path(post.profile) %></p>
+							<p class="post-meta"><%= post.created_at.strftime( 'Posted on %A %m/%d/%y' ) %></p>
+						</div>
+						<div class="post-content col-sm-12"><%= post.content %></div>
+					</section>
+
+					<div class="post-footer col-sm-12">
+							
+						<div class="row">
+							<section class="post-footer-left col-sm-10">
+								<%= link_to "Like", "#" %>
+								<%= link_to "Comment", "#" %>
+							</section>
+
+							<section class="post-footer-right col-sm-2 pull-right">
+								<% if belongs_to_current_user? %>
+									<%= link_to "Delete", post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %>
+								<% end %>
+							</section>
+						
+						</div> <!-- /row -->
+
+					</div> <!-- /post-footer -->
+
+				<% end %> <!-- end @profile.posts.each do |post| statement -->
+
+			<% end %> <!-- End the if @profile.posts.count == 0 statement -->
+
+		</div><!-- / Timeline -->
+
+	</main>	<!-- /row -->
+
+</div> <!-- / content -->

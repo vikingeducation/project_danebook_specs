@@ -40,9 +40,19 @@ private
 	helper_method :signed_in_user?
 
 	def belongs_to_current_user?
-		@current_user.profile.id.to_s == params[:id] ? true : false
+		@current_user.id == @user.id ? true : false
 	end
 	helper_method :belongs_to_current_user?
+
+	# Give us the title of the current page
+	def get_page_name
+		if controller_name == "profiles"
+			"About"
+		else
+			controller_name.titleize
+		end
+	end
+	helper_method :get_page_name
 
 
 end

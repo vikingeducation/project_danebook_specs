@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 	# really a need for that now.
 	resources :profiles
 
+  resources :posts
+
   resource :session, :only => [:create, :destroy]
 
 
