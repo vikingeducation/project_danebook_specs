@@ -3,8 +3,9 @@ class User < ActiveRecord::Base
 
 	# Let's add our associations
 
-		has_one :profile
-		has_many :posts
+		has_one :profile, dependent: :destroy
+		has_many :posts, dependent: :destroy
+		has_many :likes, dependent: :destroy
 
 	# End associations
 

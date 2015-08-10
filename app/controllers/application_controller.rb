@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_filter :must_be_signed_in
+
   # We don't just want to access @current_user
   # in one particular controller, so best to set it
   # for all of our controllers.
@@ -53,6 +55,13 @@ private
 		end
 	end
 	helper_method :get_page_name
+
+	def must_be_signed_in
+		unless signed_in_user?
+			flash[:error] = "Must be signed in to view this page!"
+			redirect_to root_url
+		end	
+	end
 
 
 end

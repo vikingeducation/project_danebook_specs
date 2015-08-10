@@ -39,10 +39,13 @@
 
 		<!-- Timeline -->
 		<div class="col-md-8">
+			<!-- We only want the post textarea to show up if
+						the @current_user is the @user who the profile
+						belongs to. -->
 			<% if belongs_to_current_user? %>
 				<section class="module clearfix no-border">
 					<h3 class="module-title">Post on your timeline</h3>
-					<%= form_for(@post) do |f| %>
+					<%= form_for([:profile, @post]) do |f| %>
 						<%= f.text_area :content, class: 'form-control', placeholder: 'Tell the world something...' %>
 						<%= f.submit 'Post', class: 'btn btn-primary pull-right' %>
 					<% end %>
@@ -55,7 +58,8 @@
 				<p>Sorry, there are no posts to display.</p>
 			
 			<% else %>
-
+				
+				<!-- Otherwise, there are posts so let's display them! -->
 				<% @profile.posts.order('created_at DESC').each do |post| %>
 					<section class="post col-sm-12">
 						<div class="post-header col-sm-12">
@@ -69,17 +73,28 @@
 							
 						<div class="row">
 							<section class="post-footer-left col-sm-10">
-								<%= link_to "Like", "#" %>
+								<%= display_like_link(post) %>
 								<%= link_to "Comment", "#" %>
 							</section>
 
 							<section class="post-footer-right col-sm-2 pull-right">
 								<% if belongs_to_current_user? %>
-									<%= link_to "Delete", post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %>
+									<%= link_to "Delete", profile_posts_path(post), method: :delete, data: { confirm: 'Are you sure?' } %>
 								<% end %>
 							</section>
 						
 						</div> <!-- /row -->
+
+						<!-- A bit of logic to show the first three likes if there are any.
+									TODO: May want to consider taking this out into a partial. -->
+						<% if post.likes.count > 0  %>
+							<ul>
+								<!-- COOL: I like this way of limiting the number of likes displayed -->
+								<% post.likes.first(3).each do |like| %>
+									<li><%= link_to like.user.name, profile_path(like.profile) %> liked this!</li>
+								<% end %>
+							</ul>
+						<% end %>
 
 					</div> <!-- /post-footer -->
 

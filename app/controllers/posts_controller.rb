@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
 
 	def show
-		@user = User.find(params[:id])
-		@profile = @user.profile
+		@profile = Profile.find(params[:profile_id])
+		@user = @profile.user
 		@post = Post.new
 	end
 
@@ -11,7 +11,7 @@ class PostsController < ApplicationController
 
 		if @post.save
 			flash[:success] = "Post created successfully!"
-			redirect_to post_path(@current_user.id)
+			redirect_to profile_posts_path(@current_user.profile)
 		else
 			flash[:error] = "Error creating post"
 			render :show
