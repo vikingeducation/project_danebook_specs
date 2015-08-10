@@ -6,7 +6,8 @@ class Post < ActiveRecord::Base
 	# CONCERN: This feels brittle... does a post really 
 	# have one profile? Perhaps. 
 	has_one :profile, :through => :user
-	has_many :likes, :as => :likeable, dependent: :destroy
+	has_many :likes, :as => :likeable, :dependent => :destroy
+	has_many :comments, :as => :commentable, :dependent => :destroy
 
 	# End associations
 

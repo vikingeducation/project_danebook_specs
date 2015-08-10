@@ -1,0 +1,27 @@
+// Place all the styles related to the comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.post-comment-wrapper {
+	display: none;
+}
+
+.post-comment {
+
+	.comment-header{
+		
+		* {
+			display: inline-block;
+		}
+
+		.comment-meta {
+			color: #DDD;
+			font-size: 10px;
+		}
+	}
+
+	.comment-content {
+
+		margin-left: 20px;
+	}
+}

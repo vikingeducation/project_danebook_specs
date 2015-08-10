@@ -69,12 +69,12 @@
 						<div class="post-content col-sm-12"><%= post.content %></div>
 					</section>
 
-					<div class="post-footer col-sm-12">
+					<div class="post-footer col-sm-12" id="post-<%= post.id %>">
 							
 						<div class="row">
 							<section class="post-footer-left col-sm-10">
 								<%= display_like_link(post) %>
-								<%= link_to "Comment", "#" %>
+								<%= link_to "Comment(#{post.comments.count})", '#', class: "show-comment", id: post.id %>
 							</section>
 
 							<section class="post-footer-right col-sm-2 pull-right">
@@ -95,6 +95,8 @@
 								<% end %>
 							</ul>
 						<% end %>
+
+						<%= render partial: '/comments/post_comments_form', locals: { comment: @comment, post: post }  %>
 
 					</div> <!-- /post-footer -->
 

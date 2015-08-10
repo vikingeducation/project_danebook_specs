@@ -1,9 +1,16 @@
 class PostsController < ApplicationController
+	# This filter will set the controller name in our session
+	# so that we can use it elsewhere. Specifically to be used
+	# in our polymorphic comments relationship. We need to ensure
+	# that we include this filter on other places where there is 
+	# polymorphism as well, specifically photos. 
+	before_filter :set_referrer_controller
 
 	def show
 		@profile = Profile.find(params[:profile_id])
 		@user = @profile.user
 		@post = Post.new
+		@comment = Comment.new
 	end
 
 	def create
@@ -19,10 +26,10 @@ class PostsController < ApplicationController
 	end
 
 	def destroy
-		@post = Post.find(params[:id])
+		@post = Post.find(params[:profile_id])
 		if @post.destroy
 			flash[:success] = "Post deleted successfully!"
-			redirect_to profile_path(@post.profile)
+			redirect_to profile_posts_path(@post.profile)
 		else
 			flash[:error] = "Post unable to be deleted"
 			render :show
@@ -36,4 +43,5 @@ private
 	def post_params
 		params.require(:post).permit(:content)
 	end
+
 end

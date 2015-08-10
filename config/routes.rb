@@ -15,10 +15,11 @@ Rails.application.routes.draw do
     resource :posts, :only => [:show, :create, :destroy]
   end
 
-
   resource :session, :only => [:create, :destroy]
 
+  # Only need to create/destroy likes and comments FOR NOW!
   resources :likes, :only => [:create, :destroy]
+  resource :comments, :only => [:create, :destroy]
 
 
   # These are going to go eventually but will stay for now.

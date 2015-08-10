@@ -41,11 +41,13 @@ private
 	end
 	helper_method :signed_in_user?
 
+	
 	def belongs_to_current_user?
 		@current_user.id == @user.id ? true : false
 	end
 	helper_method :belongs_to_current_user?
 
+	
 	# Give us the title of the current page
 	def get_page_name
 		if controller_name == "profiles"
@@ -56,11 +58,17 @@ private
 	end
 	helper_method :get_page_name
 
+	
 	def must_be_signed_in
 		unless signed_in_user?
 			flash[:error] = "Must be signed in to view this page!"
 			redirect_to root_url
 		end	
+	end
+
+
+	def set_referrer_controller
+		session[:referrer_controller] = controller_name
 	end
 
 
