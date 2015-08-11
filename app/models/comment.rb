@@ -8,6 +8,7 @@ class Comment < ActiveRecord::Base
 		
 	# End associations
 
+	# Including concerns for likeable model
 	include Likeable
 
 end

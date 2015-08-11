@@ -2,6 +2,7 @@ module Likeable
   extend ActiveSupport::Concern
 
   included do
+    # QUESTION: :dependent => :destroy doesn't seem to be working here...
     has_many :likes, :as => :likeable, :dependent => :destroy
   end
 

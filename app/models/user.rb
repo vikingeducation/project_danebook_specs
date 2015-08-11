@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 	# Let's add our associations
 
 		has_one :profile, dependent: :destroy
-		has_many :posts, dependent: :destroy
+		has_many :posts, :foreign_key => :author_id, dependent: :destroy
 		has_many :likes, dependent: :destroy
 		has_many :comments, :as => :commentable, :foreign_key => :author_id
 

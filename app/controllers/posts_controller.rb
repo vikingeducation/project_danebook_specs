@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 	# so that we can use it elsewhere. Specifically to be used
 	# in our polymorphic comments relationship. We need to ensure
 	# that we include this filter on other places where there is 
-	# polymorphism as well, specifically photos. 
+	# polymorphism as well, specifically photos. Used in comments_controller 
 	before_filter :set_referrer_controller
 
 	def show

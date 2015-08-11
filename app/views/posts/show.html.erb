@@ -7,7 +7,8 @@
 
 	<main class="row">
 		
-		<!-- Sidebar -->
+		<!-- Sidebar
+					TODO: This can get it's own partial -->
 		<aside id="sidebar" class="col-md-4">
 			
 			<section class="module">
@@ -42,7 +43,7 @@
 			<!-- We only want the post textarea to show up if
 						the @current_user is the @user who the profile
 						belongs to. -->
-			<% if belongs_to_current_user? %>
+			<% if belongs_to_current_profile_user? %>
 				<section class="module clearfix no-border">
 					<h3 class="module-title">Post on your timeline</h3>
 					<%= form_for([:profile, @post]) do |f| %>
@@ -63,7 +64,7 @@
 				<% @profile.posts.order('created_at DESC').each do |post| %>
 					<section class="post col-sm-12">
 						<div class="post-header col-sm-12">
-							<p><%= link_to post.user.name, profile_path(post.profile) %></p>
+							<p><%= link_to post.author.name, profile_path(post.profile) %></p>
 							<p class="post-meta"><%= post.created_at.strftime( 'Posted on %A %m/%d/%y' ) %></p>
 						</div>
 						<div class="post-content col-sm-12"><%= post.content %></div>
@@ -80,7 +81,7 @@
 							</section>
 
 							<section class="post-footer-right col-sm-2 pull-right">
-								<% if belongs_to_current_user? %>
+								<% if belongs_to_current_user?(post) %>
 									<%= link_to "Delete", profile_posts_path(post), method: :delete, data: { confirm: 'Are you sure?' } %>
 								<% end %>
 							</section>

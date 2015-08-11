@@ -3,7 +3,9 @@ module LikesHelper
 
 	# We want the link to display Like if the user has
 	# not liked a post before and Unlike if the user HAS
-	# liked a post before.
+	# liked a post before. We use the 'model' here because
+	# this might not be a post, other things can be liked
+	# as well (such as comments).
 	def display_like_link(model)
 		if model.liked_by?(@current_user)
 

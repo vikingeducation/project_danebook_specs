@@ -41,11 +41,22 @@ private
 	end
 	helper_method :signed_in_user?
 
-	
-	def belongs_to_current_user?
-		@current_user.id == @user.id ? true : false
+
+	# Whatever item is passed must have an 
+	# :author association on it.
+	def belongs_to_current_user?(item)
+		@current_user.id == item.author.id ? true : false
 	end
 	helper_method :belongs_to_current_user?
+
+
+	# TODO: This can be cleaned up. It's used in 
+	# _header.html.erb to determine whether or not
+	# the 'Edit Profile' link/button should show up.
+	def belongs_to_current_profile_user?
+		@current_user.id == @user.id ? true : false
+	end
+	helper_method :belongs_to_current_profile_user?
 
 	
 	# Give us the title of the current page

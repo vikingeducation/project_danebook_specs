@@ -15,7 +15,15 @@ class CommentsController < ApplicationController
 
 
 	def destroy
-		
+		@comment = Comment.find(params[:id])
+		if @comment.delete
+			flash[:success] = "Your embarrassing comment was deleted!"
+			redirect_to request.referrer
+		else
+			flash[:error] = "Your comment was not deleted!"
+			# QUESTION: Can you do this? Seems faulty.
+			render request.referrer
+		end
 	end
 
 private
