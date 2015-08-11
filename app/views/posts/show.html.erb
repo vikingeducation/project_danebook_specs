@@ -73,6 +73,8 @@
 							
 						<div class="row">
 							<section class="post-footer-left col-sm-10">
+								<!-- In likes_helper. Displays 'like' link if the user hasn't 
+											liked the post yet. Otherwise shows 'unlike' -->
 								<%= display_like_link(post) %>
 								<%= link_to "Comment(#{post.comments.count})", '#', class: "show-comment", id: post.id %>
 							</section>
