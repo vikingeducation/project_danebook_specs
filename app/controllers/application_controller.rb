@@ -45,7 +45,7 @@ private
 	# Whatever item is passed must have an 
 	# :author association on it.
 	def belongs_to_current_user?(item)
-		@current_user.id == item.author.id ? true : false
+		!!(@current_user.id == item.author.id)
 	end
 	helper_method :belongs_to_current_user?
 
@@ -54,7 +54,7 @@ private
 	# _header.html.erb to determine whether or not
 	# the 'Edit Profile' link/button should show up.
 	def belongs_to_current_profile_user?
-		@current_user.id == @user.id ? true : false
+		!!(@current_user.id == @user.id)
 	end
 	helper_method :belongs_to_current_profile_user?
 

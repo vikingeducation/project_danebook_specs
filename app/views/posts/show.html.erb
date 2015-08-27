@@ -43,6 +43,10 @@
 			<!-- We only want the post textarea to show up if
 						the @current_user is the @user who the profile
 						belongs to. -->
+						
+			<!-- TODO: Since there's logic in the view it would be
+						better to make this into a helper which renders
+						a partial -->
 			<% if belongs_to_current_profile_user? %>
 				<section class="module clearfix no-border">
 					<h3 class="module-title">Post on your timeline</h3>
@@ -53,6 +57,11 @@
 				</section>
 			<% end %>
 			
+
+			<!-- TODO: Since there's logic in the view it would be
+						better to make this into a helper which renders
+						a partial -->
+
 			<!-- Give some default output if there aren't any posts -->
 			<% if @profile.posts.count == 0 %>
 

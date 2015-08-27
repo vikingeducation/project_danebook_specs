@@ -4,6 +4,10 @@ class PostsController < ApplicationController
 	# in our polymorphic comments relationship. We need to ensure
 	# that we include this filter on other places where there is 
 	# polymorphism as well, specifically photos. Used in comments_controller 
+	
+	# TODO: Change the routes to not get the polymorphic_type from the session, 
+	# rather, it makes more sense to do this through the routes like in the 
+	# reading on polymorphism.
 	before_filter :set_referrer_controller
 
 	def show

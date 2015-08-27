@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
 
 	def create
 		@comment = Comment.new(comment_params)	
+		fails
 		if @comment.save
 			flash[:success] = 'Thanks for your comment!'
 			redirect_to request.referrer
@@ -21,8 +22,8 @@ class CommentsController < ApplicationController
 			redirect_to request.referrer
 		else
 			flash[:error] = "Your comment was not deleted!"
-			# QUESTION: Can you do this? Seems faulty.
-			render request.referrer
+			# QUESTION: Can you do this? Seems faulty. ANSWSER: NO! Must redirect_to
+			redirect_to request.referrer
 		end
 	end
 
@@ -30,9 +31,15 @@ private
 
 	
 	def comment_params
-		params.require(:comment).permit(:content, :commentable_type, :commentable_id, :author_id)	
+		params.require(:comment).permit(:content, :commentable_type, :commentable_id, :author_id)
 	end
 
+	# TODO!!: Make this go downstream from comment params...
+	# def full_comment_params
+
+	# 	my_hash[:commentable_id]
+	# 	}
+	# end
 
 	# Need to set the other params for the comment via params and session
 	# QUESTION: THIS ALL SEEMS SMELLY, WHAT'S A BETTER WAY TO SET THESE?!

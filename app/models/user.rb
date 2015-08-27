@@ -34,11 +34,6 @@ class User < ActiveRecord::Base
 	
 	def generate_token
 		
-		# QUESTION: Can we go over exactly how this works? Why is self[:auth_token]
-		# setting this entry, I feel like it shouldn't. I believe I understand the 
-		# while loop just the syntax is funny... this is a rescue loop?
-		# ANSWER: self[:auth_token] == self.auth_token
-		
 		begin
 			self[:auth_token] = SecureRandom.urlsafe_base64
 		end	while User.exists?(:auth_token => self[:auth_token])
