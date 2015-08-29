@@ -51,9 +51,16 @@ group :development, :test do
 
   # Sqlite3 for development and test
   gem 'sqlite3'
+
+  # Let's get some TESTS going!
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 4.0'
+
 end
 
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
+  # MOAR TESTING
+  gem 'guard-rspec', require: false
 end
