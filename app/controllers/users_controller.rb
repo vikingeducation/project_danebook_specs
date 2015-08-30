@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 	# TODO: Redirect user to homepage if not 
 	# logged in viewing profiles
 
-	skip_before_filter :must_be_signed_in, :only => [:new]
+	skip_before_filter :must_be_signed_in, :only => [:new, :create]
 
 	def new
 		@user = User.new

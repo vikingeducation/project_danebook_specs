@@ -55,8 +55,14 @@ group :development, :test do
   # Let's get some TESTS going!
   gem 'rspec-rails'
   gem 'factory_girl_rails', '~> 4.0'
-  gem 'shoulda-matchers'
 
+end
+
+group :test do
+  # MOAR TESTING!!!!!
+  gem 'capybara'
+  gem 'launchy'
+  gem 'shoulda-matchers'
 end
 
 group :development do
