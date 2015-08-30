@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 describe User do
+    # Using the Shoulda gem, it forces you to test
+    # associations like this:
+    it { should have_one(:profile) }
+    it { should have_many(:posts) }
+    it { should have_many(:comments) }
+    it { should have_many(:likes) }
 
 	let(:user){ build(:user) }
 
@@ -69,6 +75,13 @@ describe User do
             token_1 = user.auth_token
             user.regenerate_auth_token
             expect(token_1).to_not eq(user.auth_token)
+        end
+    end # /context model methods
+
+    context 'dependent destroys' do
+        it 'deletes profile when user is deleted' do
+            user = create(:user)
+            expect{ user.destroy }.to change(Profile, :count).by(-1)
         end
     end
 	

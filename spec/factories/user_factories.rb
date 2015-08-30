@@ -12,14 +12,17 @@ FactoryGirl.define do
 		birthday 				"1980-01-01"
 		gender					1
 
-		after(:create) do
+		after(:create) do |user|
 			create(:profile, :user_id => user.id)
 		end
 
-			# Associations
-			# posts
-			# likes
-			# comments
+		factory :user_with_post_like do
+			after(:create) do |user|
+				post = create( :post, :author_id => user.id )
+				create( :like, :user_id => user.id, :likeable_id => post.id )
+			end
+		end
+
 	end
 	
 end
