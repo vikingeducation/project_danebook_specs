@@ -1,0 +1,14 @@
+<% if error_model.errors.any? %>
+	<% error_model.errors.full_messages.each do |message| %>
+		
+		<section class="error-message">
+			
+			<div class="alert alert-danger alert-dismissible fade in">
+		    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		    <p><%= message %></p>
+		  </div>
+
+		</section>
+ 
+  <% end %>
+<% end %>
