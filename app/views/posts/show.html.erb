@@ -1,0 +1,123 @@
+<div id="wrapper" class="container-fluid">
+<%= render partial: '/shared/main_navbar' %>
+
+<div id="content" class="col-md-10 col-md-offset-1">
+
+	<%= render partial: '/shared/header' %>
+
+	<main class="row">
+		
+		<!-- Sidebar
+					TODO: This can get it's own partial -->
+		<aside id="sidebar" class="col-md-4">
+			
+			<section class="module">
+				<h3 class="module-title">About</h3>
+				<div class="module-content">
+					<p><b>Born on:</b> <%= @profile.user.birthday %></p>
+					<p><b>Went to school at:</b> <%= @profile.college %></p>
+					<p><b>Hometown:</b> <%= @profile.hometown %></p>
+					<p><b>Currently lives:</b> <%= @profile.currently_live %></p>
+				</div>
+			</section>
+
+			<section class="module">
+				<h3 class="module-title">Photos</h3>
+				<div class="module-content">
+					<p>Content goes here.</p>
+				</div>
+			</section>
+
+			<section class="module">
+				<h3 class="module-title">Friends</h3>
+				<div class="module-content">
+					<p>Content goes here.</p>
+				</div>
+			</section>
+
+		</aside>
+		<!-- / Sidebar -->
+
+		<!-- Timeline -->
+		<div class="col-md-8">
+			<!-- We only want the post textarea to show up if
+						the @current_user is the @user who the profile
+						belongs to. -->
+						
+			<!-- TODO: Since there's logic in the view it would be
+						better to make this into a helper which renders
+						a partial -->
+			<% if belongs_to_current_profile_user? %>
+				<section class="module clearfix no-border">
+					<h3 class="module-title">Post on your timeline</h3>
+					<%= form_for([:profile, @post], :url => profile_posts_path(@user.profile), :method => 'post') do |f| %>
+						<%= f.text_area :content, class: 'form-control', placeholder: 'Tell the world something...' %>
+						<%= f.submit 'Post', class: 'btn btn-primary pull-right' %>
+					<% end %>
+				</section>
+			<% end %>
+			
+
+			<!-- TODO: Since there's logic in the view it would be
+						better to make this into a helper which renders
+						a partial -->
+
+			<!-- Give some default output if there aren't any posts -->
+			<% if @profile.posts.count == 0 %>
+
+				<p>Sorry, there are no posts to display.</p>
+			
+			<% else %>
+				
+				<!-- Otherwise, there are posts so let's display them! -->
+				<% @profile.posts.order('created_at DESC').each do |post| %>
+					<section class="post col-sm-12">
+						<div class="post-header col-sm-12">
+							<p><%= link_to post.author.name, profile_path(post.profile) %></p>
+							<p class="post-meta"><%= post.created_at.strftime( 'Posted on %A %m/%d/%y' ) %></p>
+						</div>
+						<div class="post-content col-sm-12"><%= post.content %></div>
+					</section>
+
+					<div class="post-footer col-sm-12" id="post-<%= post.id %>">
+							
+						<div class="row">
+							<section class="post-footer-left col-sm-10">
+								<!-- In likes_helper. Displays 'like' link if the user hasn't 
+											liked the post yet. Otherwise shows 'unlike' -->
+								<%= display_like_link(post) %>
+								<%= link_to "Comment(#{post.comments.count})", '#', class: "show-comment", id: post.id %>
+							</section>
+
+							<section class="post-footer-right col-sm-2 pull-right">
+								<% if belongs_to_current_user?(post) %>
+									<%= link_to "Delete", profile_posts_path(post), method: :delete, data: { confirm: 'Are you sure?' } %>
+								<% end %>
+							</section>
+						
+						</div> <!-- /row -->
+
+						<!-- A bit of logic to show the first three likes if there are any.
+									TODO: May want to consider taking this out into a partial. -->
+						<% if post.likes.count > 0  %>
+							<ul>
+								<!-- COOL: I like this way of limiting the number of likes displayed -->
+								<% post.likes.first(3).each do |like| %>
+									<li><%= link_to like.user.name, profile_path(like.profile) %> liked this!</li>
+								<% end %>
+							</ul>
+						<% end %>
+
+						<%= render partial: '/comments/post_comments_form', locals: { comment: @comment, post: post }  %>
+
+					</div> <!-- /post-footer -->
+
+				<% end %> <!-- end @profile.posts.each do |post| statement -->
+
+			<% end %> <!-- End the if @profile.posts.count == 0 statement -->
+
+		</div><!-- / Timeline -->
+
+	</main>	<!-- /row -->
+
+</div> <!-- / content -->

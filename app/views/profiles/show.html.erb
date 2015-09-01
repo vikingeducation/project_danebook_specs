@@ -1,0 +1,55 @@
+<div id="wrapper" class="container-fluid">
+<%= render partial: '/shared/main_navbar' %>
+
+<!-- Content -->
+	<div id="content" class="col-md-10 col-md-offset-1">
+		
+		<%= render partial: '/shared/header' %>
+		
+		<div id="row">
+			<div id="about_info_container">
+				<div id="about_info_left" class="col-md-4">
+					<h3>Basic Information</h3>
+					<table>
+						<tr>
+							<td><b>Birthday:</b></td>
+							<td><%= @profile.user.birthday.strftime('%B %d, %Y') %></td>
+						</tr>
+						<tr>
+							<td><b>College:</b></td>
+							<td><%= @profile.user.profile.college %></td>
+						</tr>
+						<tr>
+							<td><b>Hometown:</b></td>
+							<td><%= @profile.user.profile.hometown %></td>
+						</tr>
+						<tr>
+							<td><b>Currently Lives:</b></td>
+							<td><%= @profile.user.profile.currently_live %></td>
+						</tr>
+					</table>
+					
+					<h3>Contact Information</h3>
+					<table>
+						<tr>
+							<td><b>Email:</b></td>
+							<td><a href="mailto:<%= @profile.user.email %>"><%= @profile.user.email %></a></td>
+						</tr>
+						<tr>
+							<td><b>Telephone:</b></td>
+							<td><%= @profile.user.profile.phone %></td>
+						</tr>
+					</table>
+				</div>
+				
+				<div id="about_info_right" class="col-md-8">
+					<h3>Words To Live By</h3>
+					<p><%= @profile.user.profile.words_to_live_by %></p>
+					
+					<h3>About Me</h3>
+					<p><%= @profile.user.profile.bio %></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- / Content -->
