@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
 		if @user && @user.authenticate(params[:password])
 			sign_in(@user)
 			flash[:success] = "Successfully logged in!"
-
 			# TODO: This doesn't seem to be working on Heroku... verify
 			# that it's working locally too please?
 			redirect_to profile_path(@user.profile)

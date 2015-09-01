@@ -1,10 +1,14 @@
 require 'rails_helper'
 
-describe "profiles/show.html.erb" do
+describe "posts/show.html.erb" do
 
 	context 'with a signed in user' do
 		
 		let(:user){ create(:user) }
+		let(:post){ create(:post, :author_id => user.id) }
+		# Need this comment in order to re-render the page
+		# with the form_for for comments.
+		let(:comment){ create(:comment, :author_id => user.id, :commentable_id => post.id)}
 
 		before do
 			
@@ -13,6 +17,9 @@ describe "profiles/show.html.erb" do
 			assign(:user, user)
 			assign(:current_user, user)
 			assign(:profile, user.profile)
+			assign(:post, post)
+			assign(:comment, comment)
+
 
 			# DUP 1
 			def view.signed_in_user?
@@ -25,22 +32,15 @@ describe "profiles/show.html.erb" do
 				@user
 			end
 
-			# NOTES: This was, unfortunately, the best way to make
-			# this work since I use controller_name as a comparison
-			# in some of my views.
 			def view.controller_name
-				"profiles"
+				"posts"
 			end
 		end
 
-		it 'shows the users name' do
-			render
-			expect(rendered).to match(@user.first_name)
-		end
 
-		it 'shows link to edit profile' do
+		it 'does NOT show link to edit profile' do
 			render
-			expect(rendered).to match("<a .*>Edit Profile</a>")
+			expect(rendered).not_to match("<a .*>Edit Profile</a>")
 		end
 
 	end

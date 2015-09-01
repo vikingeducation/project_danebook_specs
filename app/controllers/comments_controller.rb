@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
 
 	def create
 		@comment = Comment.new(comment_params)	
-		fails
 		if @comment.save
 			flash[:success] = 'Thanks for your comment!'
 			redirect_to request.referrer

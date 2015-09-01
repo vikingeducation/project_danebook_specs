@@ -26,6 +26,15 @@ module ApplicationHelper
   end
 
 
+  # QUESTION: While implimenting view testing I discovered that the 
+  # controller_name changed to "test". This resulted in me needing to
+  # create some new logic to show the 'Edit Profile' button on the profile
+  # pages.
+  def profile_show_page?
+    controller_name == "profiles"
+  end
+
+
 	def bootstrap_class_for flash_type
     case flash_type
       when :success

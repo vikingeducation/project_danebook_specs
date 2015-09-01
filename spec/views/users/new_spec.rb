@@ -17,11 +17,16 @@ describe "users/new.html.erb" do
 			end
 		end
 
+
+		# QUESTION: Something interesting I found here is that
+		# though my form_for's would normally work in development/production
+		# when I went to test I would get errors b/c I didn't specify the 
+		# :url and/or :method. I thought that was very interesting.
 		it 'shows the users name' do
 			assign(:user, user)
 			assign(:current_user, user)
-			binding.pry
 			render
+			expect(rendered).to match(user.first_name)
 		end
 
 	end

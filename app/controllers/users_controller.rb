@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 			Profile.create(:user_id => @user.id)
 			
 			# TODO: Redirect to profile_path
-			redirect_to profile_path(@user)
+			redirect_to profile_path(@user.profile)
 		else
 			flash[:error] = "Failed to create user"
 			render :new

@@ -50,7 +50,7 @@
 			<% if belongs_to_current_profile_user? %>
 				<section class="module clearfix no-border">
 					<h3 class="module-title">Post on your timeline</h3>
-					<%= form_for([:profile, @post]) do |f| %>
+					<%= form_for([:profile, @post], :url => profile_posts_path(@user.profile), :method => 'post') do |f| %>
 						<%= f.text_area :content, class: 'form-control', placeholder: 'Tell the world something...' %>
 						<%= f.submit 'Post', class: 'btn btn-primary pull-right' %>
 					<% end %>
