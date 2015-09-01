@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 			Profile.create(:user_id => @user.id)
 			
 			# TODO: Redirect to profile_path
-			redirect_to root_url
+			redirect_to profile_path(@user)
 		else
 			flash[:error] = "Failed to create user"
 			render :new
@@ -47,7 +47,7 @@ private
 
 	# Convert birthday into a meaningful date from the form.
 	def convert_birthday(params)
-		if params[:birthday_year].empty? || params[:birthday_month].empty? || params[:birthday_day].empty?
+		if params[:birthday_year].nil? || params[:birthday_month].nil? || params[:birthday_day].nil?
 			nil
 		else
 			Date.parse("#{params[:birthday_year]}-#{params[:birthday_month]}-#{params[:birthday_day]}")
