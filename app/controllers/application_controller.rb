@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
   # for all of our controllers.
 	before_filter :current_user
 
+	# I delegated some methods to the ApplicationHelper
+	# in order to do view testing.
+	include ApplicationHelper
+
 private
 
 	# Store our ID in the session and set the 
@@ -40,34 +44,6 @@ private
 		!!current_user
 	end
 	helper_method :signed_in_user?
-
-
-	# Whatever item is passed must have an 
-	# :author association on it.
-	def belongs_to_current_user?(item)
-		!!(@current_user.id == item.author.id)
-	end
-	helper_method :belongs_to_current_user?
-
-
-	# TODO: This can be cleaned up. It's used in 
-	# _header.html.erb to determine whether or not
-	# the 'Edit Profile' link/button should show up.
-	def belongs_to_current_profile_user?
-		!!(@current_user.id == @user.id)
-	end
-	helper_method :belongs_to_current_profile_user?
-
-	
-	# Give us the title of the current page
-	def get_page_name
-		if controller_name == "profiles"
-			"About"
-		else
-			controller_name.titleize
-		end
-	end
-	helper_method :get_page_name
 
 	
 	def must_be_signed_in
